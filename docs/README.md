@@ -185,7 +185,7 @@ Enforce a validation exception handler to return a JSON response:
 ```python
 from fastapi import FastAPI
 from fastapi.requests import Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import Response
 from fastapi.exceptions import RequestValidationError
 from jder_fastapi.handlers import request_validation_exception_handler
 
@@ -196,6 +196,6 @@ app: FastAPI = FastAPI()
 async def validation_exception_handler(
     req: Request,
     exc: RequestValidationError
-) -> JSONResponse:
+) -> Response:
     return request_validation_exception_handler(req, exc)
 ```
