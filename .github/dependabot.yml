@@ -1,0 +1,12 @@
+version: 2
+updates:
+    - package-ecosystem: "uv"
+      directory: "/"
+      schedule:
+          interval: "daily"
+          time: "00:00"
+          timezone: "Etc/UTC"
+      ignore:
+          - dependency-name: "fastapi"
+            update-types:
+                - "version-update:semver-patch"
