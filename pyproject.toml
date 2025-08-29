@@ -1,0 +1,19 @@
+[project]
+name = "workspace"
+version = "0.0.0"
+classifiers = ["Private :: Do Not Upload"]
+
+[tool.uv.workspace]
+members = [
+    "package",
+    "test",
+    "example",
+]
+
+[tool.uv.sources]
+jder-fastapi = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.11,<0.13.0",
+]

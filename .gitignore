@@ -1,0 +1,15 @@
+# Caches
+__MACOSX/
+.DS_Store
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+
+# Virtual environments
+.venv/
+
+# Builds
+dist/
+
+# Logs
+*.log

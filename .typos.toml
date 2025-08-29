@@ -1,0 +1,13 @@
+[files]
+extend-exclude = [
+    ".git/",
+    ".github/",
+    "__MACOSX/",
+    ".DS_Store",
+    ".pytest_cache/",
+    ".ruff_cache",
+    ".venv/",
+    "__pycache__",
+    "dist",
+    "*.log",
+]

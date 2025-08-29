@@ -1,0 +1,14 @@
+line-length = 80
+indent-width = 4
+target-version = "py313"
+
+[format]
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+indent-style = "space"
+line-ending = "lf"
+quote-style = "double"
+skip-magic-trailing-comma = false
+
+[lint]
+select = ["I", "B"]

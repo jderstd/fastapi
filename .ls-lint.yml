@@ -1,0 +1,21 @@
+ls:
+    .dir: snake_case
+    .py: snake_case
+
+ignore:
+    - .git
+    - .github
+    - __MACOSX
+    - "**/__MACOSX"
+    - .DS_Store
+    - "**/.DS_Store"
+    - .pytest_cache
+    - "**/.pytest_cache"
+    - .ruff_cache
+    - "**/.ruff_cache"
+    - .venv
+    - "**/.venv"
+    - __pycache__
+    - "**/__pycache__"
+    - "**/dist"
+    - "**/*.log"
