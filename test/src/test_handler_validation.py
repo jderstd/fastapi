@@ -59,7 +59,7 @@ def test_failure():
 
     assert json.errors is not None
 
-    assert json.errors[0].code == "parse.int_parsing"
+    assert json.errors[0].code == "parse"
     assert json.errors[0].path == ["path", "id"]
     assert (
         json.errors[0].message

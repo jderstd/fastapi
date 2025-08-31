@@ -71,7 +71,7 @@ def request_validation_exception_handler(
     for err in errs:
         errors.append(
             JsonResponseError(
-                code=code + f".{err.type}",
+                code=code,
                 path=err.loc,
                 message=err.msg,
             )
