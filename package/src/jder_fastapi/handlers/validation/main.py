@@ -5,6 +5,7 @@ from fastapi.requests import Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, TypeAdapter
 
+from jder_fastapi.responses.error import ResponseError
 from jder_fastapi.responses.json import (
     CreateJsonFailureResponseOptions,
     JsonResponseError,
@@ -52,7 +53,7 @@ def request_validation_exception_handler(
 
     status: int = 400
 
-    code: str = "parse"
+    code: str = ResponseError.PARSE.to_code()
 
     if len(errs) == 0:
         return createJsonResponse(

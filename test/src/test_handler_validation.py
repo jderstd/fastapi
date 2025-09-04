@@ -5,6 +5,7 @@ from fastapi.responses import Response as FastApiResponse
 from fastapi.testclient import TestClient
 from httpx import Response as HttpxResponse
 from jder_fastapi.handlers import request_validation_exception_handler
+from jder_fastapi.responses.error import ResponseError
 from jder_fastapi.responses.json import (
     CreateJsonSuccessResponseOptions,
     JsonResponse,
@@ -59,7 +60,7 @@ def test_failure():
 
     assert json.errors is not None
 
-    assert json.errors[0].code == "parse"
+    assert json.errors[0].code == ResponseError.PARSE.to_code()
     assert json.errors[0].path == ["path", "id"]
     assert (
         json.errors[0].message
