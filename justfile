@@ -40,6 +40,11 @@ build:
 example:
     cd example && uv run fastapi dev main.py --port 4001
 
+# Publish package as dry-run
+publish-try:
+    cd ./{{pkg}} && uv publish --dry-run
+
+# Publish package
 publish:
     cd ./{{pkg}} && uv publish
 
