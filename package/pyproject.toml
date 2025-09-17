@@ -33,8 +33,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/jder-std/fastapi"
-Documentation = "https://github.com/jder-std/fastapi/blob/main/docs/README.md"
-Repository = "https://github.com/jder-std/fastapi"
-Issues = "https://github.com/jder-std/fastapi/issues"
-Changelog = "https://github.com/jder-std/fastapi/blob/main/package/CHANGELOG.md"
+Homepage = "https://github.com/jderstd/fastapi"
+Documentation = "https://github.com/jderstd/fastapi/blob/main/docs/README.md"
+Repository = "https://github.com/jderstd/fastapi"
+Issues = "https://github.com/jderstd/fastapi/issues"
+Changelog = "https://github.com/jderstd/fastapi/blob/main/package/CHANGELOG.md"

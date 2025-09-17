@@ -2,7 +2,7 @@
 
 A response builder for FastAPI.
 
-This package includes different response builders based on the JSON response structure specified in [JSON Data Errors Response (JDER)](https://github.com/jder-std/spec). With the builders, various kinds of responses can be created easily instead of sending plain text responses.
+This package includes different response builders based on the JSON response structure specified in [JSON Data Errors Response (JDER)](https://github.com/jderstd/spec). With the builders, various kinds of responses can be created easily instead of sending plain text responses.
 
 ## Quick Start
 
