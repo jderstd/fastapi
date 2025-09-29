@@ -4,9 +4,9 @@ build-backend = "uv_build"
 
 [project]
 name = "jder-fastapi"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
-    "fastapi>=0.116.0,<0.117.0",
+    "fastapi>=0.116.0,<0.119.0",
 ]
 requires-python = ">=3.13"
 authors = [
