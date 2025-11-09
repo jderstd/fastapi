@@ -233,14 +233,14 @@ wheels = [
 
 [[package]]
 name = "jder-fastapi"
-version = "0.1.3"
+version = "0.1.4"
 source = { editable = "package" }
 dependencies = [
     { name = "fastapi" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "fastapi", specifier = ">=0.116.0,<0.120.0" }]
+requires-dist = [{ name = "fastapi", specifier = ">=0.116.0,<0.122.0" }]
 
 [[package]]
 name = "jinja2"
