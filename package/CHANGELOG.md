@@ -1,3 +1,11 @@
+## 0.1.5 (2025-11-26)
+
+### What's Changed
+
+- Update UV `build-system` supported version range to `>=0.9.0,<0.10.0`
+- Update `fastapi` supported version range to `>=0.116.0,<0.123.0`
+- Update `requires-python` version range to `>=3.13,<4.0`
+
 ## 0.1.4 (2025-11-09)
 
 ### What's Changed
