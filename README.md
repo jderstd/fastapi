@@ -33,6 +33,10 @@ And the response will be shown as below:
 For the documentation,
 please refer to the [Documentation](./docs/README.md).
 
+## Contributing
+
+For contributing, please refer to the [contributing guide](./CONTRIBUTING.md).
+
 ## License
 
 This project is licensed under the terms of the MIT license.

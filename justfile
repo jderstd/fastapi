@@ -13,11 +13,6 @@ _:
 i:
     uv sync --all-packages
 
-# Set up the project
-setup:
-    brew install ls-lint typos-cli
-    just i
-
 # Lint the code
 lint:
     ls-lint
