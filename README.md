@@ -31,7 +31,7 @@ And the response will be shown as below:
 ## Documentation
 
 For the documentation,
-please refer to the [Documentation](./docs/README.md).
+please refer to the [documentation](./docs/README.md).
 
 ## Contributing
 
