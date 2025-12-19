@@ -7,6 +7,7 @@ pkg := "package"
 _:
     just lint
     just fmt
+    just type
     just test
 
 # Install
@@ -18,6 +19,10 @@ lint:
     ls-lint
     typos
     uv run ruff check --fix
+
+# Check types
+type:
+    uv run ty check
 
 # Format the code
 fmt:
