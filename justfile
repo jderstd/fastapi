@@ -20,13 +20,13 @@ lint:
     typos
     uv run ruff check --fix
 
-# Check types
-type:
-    uv run ty check
-
 # Format the code
 fmt:
     uv run ruff format
+
+# Check types
+type:
+    uv run ty check
 
 # Run tests
 test:
