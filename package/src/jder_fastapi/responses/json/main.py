@@ -1,4 +1,4 @@
-from typing import Any, Mapping, Optional, TypeVar
+from typing import Any, Mapping, Optional, TypeVar, cast
 
 from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel
@@ -167,26 +167,40 @@ def createJsonResponse(
         return createJsonResponse(res)
     ```
     """
-    is_failure: bool = isinstance(options, CreateJsonFailureResponseOptions)
-
-    status: int = (
-        options.status
-        if options and options.status
-        else (400 if is_failure else 200)
-    )
+    status: int = 200
 
     headers: Mapping[str, str] = {
         **(dict(response.headers) if response else {}),
         **(options.headers if options and options.headers else {}),
     }
 
-    body: JsonResponse[T] = JsonResponse(
-        success=not is_failure,
-        data=options.data
-        if isinstance(options, CreateJsonSuccessResponseOptions)
-        else None,
-        errors=options.errors if is_failure else None,
-    )
+    body: JsonResponse[T] | None = None
+
+    # success
+    if isinstance(options, CreateJsonSuccessResponseOptions):
+        status = options.status if options and options.status else 200
+        body = JsonResponse(
+            success=True,
+            data=options.data,
+            errors=None,
+        )
+
+    # failure
+    elif isinstance(options, CreateJsonFailureResponseOptions):
+        status = options.status if options and options.status else 400
+        body = JsonResponse(
+            success=False,
+            data=None,
+            errors=options.errors,
+        )
+
+    # dataless success
+    if body is None:
+        body = JsonResponse(
+            success=True,
+            data=None,
+            errors=None,
+        )
 
     return JSONResponse(
         status_code=status,
