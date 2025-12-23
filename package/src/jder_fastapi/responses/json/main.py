@@ -1,4 +1,4 @@
-from typing import Any, Mapping, Optional, TypeVar, cast
+from typing import Any, Mapping, Optional, TypeVar
 
 from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel
