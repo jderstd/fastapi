@@ -5,8 +5,8 @@ pkg := "package"
 
 # Default action
 _:
-    just lint
     just fmt
+    just lint
     just type
     just test
 
@@ -14,15 +14,15 @@ _:
 i:
     uv sync --all-packages
 
+# Format the code
+fmt:
+    uv run ruff format
+
 # Lint the code
 lint:
     ls-lint
     typos
     uv run ruff check --fix
-
-# Format the code
-fmt:
-    uv run ruff format
 
 # Check types
 type:
