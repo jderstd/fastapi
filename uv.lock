@@ -303,7 +303,7 @@ wheels = [
 
 [[package]]
 name = "jder-fastapi"
-version = "0.1.8"
+version = "0.1.9"
 source = { editable = "package" }
 dependencies = [
     { name = "fastapi" },
