@@ -42,7 +42,9 @@ And the response will be shown as below:
 
 ```json
 {
-    "success": true
+    "success": true,
+    "data": null,
+    "errors": []
 }
 ```
 
@@ -75,7 +77,8 @@ And the response will be shown as below:
 ```json
 {
     "success": true,
-    "data": "Hello, World!"
+    "data": "Hello, World!",
+    "errors": []
 }
 ```
 
@@ -89,7 +92,7 @@ from fastapi.responses import Response
 from jder_fastapi.responses.json import (
     createJsonResponse,
     createJsonFailureResponseOptions,
-    JsonResponseError,
+    JsonResponseErrorInput,
 )
 
 app: FastAPI = FastAPI()
@@ -101,7 +104,7 @@ async def route() -> Response:
         options=createJsonFailureResponseOptions(
             status=500,
             errors=[
-                JsonResponseError(
+                JsonResponseErrorInput(
                     code="server",
                 ),
             ],
@@ -114,9 +117,12 @@ And the response will be shown as below:
 ```json
 {
     "success": false,
+    "data": null,
     "errors": [
         {
-            "code": "server"
+            "code": "server",
+            "path": [],
+            "message": null
         }
     ]
 }

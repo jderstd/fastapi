@@ -24,7 +24,9 @@ And the response will be shown as below:
 
 ```json
 {
-    "success": true
+    "success": true,
+    "data": null,
+    "errors": []
 }
 ```
 
