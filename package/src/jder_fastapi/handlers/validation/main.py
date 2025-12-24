@@ -8,7 +8,7 @@ from pydantic import BaseModel, ConfigDict, TypeAdapter
 from jder_fastapi.responses.error import ResponseError
 from jder_fastapi.responses.json import (
     CreateJsonFailureResponseOptions,
-    JsonResponseError,
+    JsonResponseErrorInput,
     createJsonResponse,
 )
 
@@ -60,18 +60,18 @@ def request_validation_exception_handler(
             options=CreateJsonFailureResponseOptions(
                 status=status,
                 errors=[
-                    JsonResponseError(
+                    JsonResponseErrorInput(
                         code=code,
                     )
                 ],
             )
         )
 
-    errors: list[JsonResponseError] = []
+    errors: list[JsonResponseErrorInput] = []
 
     for err in errs:
         errors.append(
-            JsonResponseError(
+            JsonResponseErrorInput(
                 code=code,
                 path=err.loc,
                 message=err.msg,

@@ -1,3 +1,40 @@
+## 0.2.0
+
+### Breaking Changes
+
+- Failure response use `JsonResponseErrorInput` to create error now
+- `path` field in `JsonResponseError` is a list instead of an optional list now
+- `errors` field in `JsonResponse` is a list instead of an optional list now
+
+### What's Changed
+
+- Avoid omit null value and empty array
+
+### Migrating from 0.1.X to 0.2.0
+
+```diff
+from fastapi.responses import Response
+
+from jder_fastapi.responses.json import (
+    CreateJsonFailureResponseOptions,
+-   JsonResponseError,
++   JsonResponseErrorInput,
+    createJsonResponse,
+)
+
+async def route() -> Response:
+    return createJsonResponse(
+        options=CreateJsonFailureResponseOptions(
+            errors=[
+-               JsonResponseError(
++               JsonResponseErrorInput(
+                    code="not_found",
+                )
+            ]
+        )
+    )
+```
+
 ## 0.1.9 (2025-12-23)
 
 ### What's Changed

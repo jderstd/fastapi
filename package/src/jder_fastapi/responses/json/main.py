@@ -15,7 +15,7 @@ class JsonResponseError(BaseModel):
     """
     Code representing the error.
     """
-    path: Optional[list[str]] = None
+    path: list[str] = []
     """
     Indicates where the error occurred.
     """
@@ -38,7 +38,7 @@ class JsonResponse[T = Any](BaseModel):
     """
     Requested information for the response when `success` is `true`.
     """
-    errors: Optional[list[JsonResponseError]] = None
+    errors: list[JsonResponseError] = []
     """
     A list of errors for the response when `success` is `false`.
     """
@@ -71,12 +71,31 @@ class CreateJsonSuccessResponseOptions[T = Any](CreateJsonResponseBaseOptions):
     """
 
 
+class JsonResponseErrorInput(BaseModel):
+    """
+    Input model for JSON response error.
+    """
+
+    code: str
+    """
+    Code representing the error.
+    """
+    path: Optional[list[str]] = None
+    """
+    Indicates where the error occurred.
+    """
+    message: Optional[str] = None
+    """
+    Detail of the error.
+    """
+
+
 class CreateJsonFailureResponseOptions(CreateJsonResponseBaseOptions):
     """
     Options of `createJsonResponse` function.
     """
 
-    errors: Optional[list[JsonResponseError]] = None
+    errors: list[JsonResponseErrorInput] = []
     """
     A list of errors for the response when `success` is `false`.
     """
@@ -182,16 +201,28 @@ def createJsonResponse(
         body = JsonResponse(
             success=True,
             data=options.data,
-            errors=None,
+            errors=[],
         )
 
     # failure
     elif isinstance(options, CreateJsonFailureResponseOptions):
         status = options.status if options and options.status else 400
+
+        errors: list[JsonResponseError] = []
+
+        for error in options.errors:
+            errors.append(
+                JsonResponseError(
+                    code=error.code,
+                    path=error.path if error.path else [],
+                    message=error.message,
+                )
+            )
+
         body = JsonResponse(
             success=False,
             data=None,
-            errors=options.errors,
+            errors=errors,
         )
 
     # dataless success
@@ -199,11 +230,11 @@ def createJsonResponse(
         body = JsonResponse(
             success=True,
             data=None,
-            errors=None,
+            errors=[],
         )
 
     return JSONResponse(
         status_code=status,
         headers=headers,
-        content=body.model_dump(exclude_none=True),
+        content=body.model_dump(),
     )
