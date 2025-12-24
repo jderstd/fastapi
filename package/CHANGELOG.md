@@ -6,6 +6,10 @@
 - `path` field in `JsonResponseError` is a list instead of an optional list now
 - `errors` field in `JsonResponse` is a list instead of an optional list now
 
+### What's New
+
+- Export `JsonResponseErrorInput`
+
 ### What's Changed
 
 - Avoid omit null value and empty array
