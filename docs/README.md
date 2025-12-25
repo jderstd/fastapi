@@ -92,7 +92,7 @@ from fastapi.responses import Response
 from jder_fastapi.responses.json import (
     createJsonResponse,
     createJsonFailureResponseOptions,
-    JsonResponseErrorInput,
+    JsonResponseError,
 )
 
 app: FastAPI = FastAPI()
@@ -104,7 +104,7 @@ async def route() -> Response:
         options=createJsonFailureResponseOptions(
             status=500,
             errors=[
-                JsonResponseErrorInput(
+                JsonResponseError(
                     code="server",
                 ),
             ],

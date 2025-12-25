@@ -4,7 +4,6 @@ from .main import (
     CreateJsonSuccessResponseOptions,
     JsonResponse,
     JsonResponseError,
-    JsonResponseErrorInput,
     createJsonResponse,
 )
 
@@ -14,6 +13,5 @@ __all__ = [
     "CreateJsonSuccessResponseOptions",
     "JsonResponse",
     "JsonResponseError",
-    "JsonResponseErrorInput",
     "createJsonResponse",
 ]

@@ -1,7 +1,7 @@
 from typing import Any, Mapping, Optional, TypeVar
 
 from fastapi.responses import JSONResponse, Response
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 T = TypeVar("T")
 
@@ -15,7 +15,7 @@ class JsonResponseError(BaseModel):
     """
     Code representing the error.
     """
-    path: list[str] = []
+    path: list[str] = Field(default_factory=list)
     """
     Indicates where the error occurred.
     """
@@ -71,31 +71,12 @@ class CreateJsonSuccessResponseOptions[T = Any](CreateJsonResponseBaseOptions):
     """
 
 
-class JsonResponseErrorInput(BaseModel):
-    """
-    Input model for JSON response error.
-    """
-
-    code: str
-    """
-    Code representing the error.
-    """
-    path: Optional[list[str]] = None
-    """
-    Indicates where the error occurred.
-    """
-    message: Optional[str] = None
-    """
-    Detail of the error.
-    """
-
-
 class CreateJsonFailureResponseOptions(CreateJsonResponseBaseOptions):
     """
     Options of `createJsonResponse` function.
     """
 
-    errors: list[JsonResponseErrorInput] = []
+    errors: list[JsonResponseError] = []
     """
     A list of errors for the response when `success` is `false`.
     """
@@ -198,6 +179,7 @@ def createJsonResponse(
     # success
     if isinstance(options, CreateJsonSuccessResponseOptions):
         status = options.status if options and options.status else 200
+
         body = JsonResponse(
             success=True,
             data=options.data,
@@ -208,21 +190,10 @@ def createJsonResponse(
     elif isinstance(options, CreateJsonFailureResponseOptions):
         status = options.status if options and options.status else 400
 
-        errors: list[JsonResponseError] = []
-
-        for error in options.errors:
-            errors.append(
-                JsonResponseError(
-                    code=error.code,
-                    path=error.path if error.path else [],
-                    message=error.message,
-                )
-            )
-
         body = JsonResponse(
             success=False,
             data=None,
-            errors=errors,
+            errors=options.errors,
         )
 
     # dataless success

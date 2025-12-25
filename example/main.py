@@ -9,7 +9,7 @@ from jder_fastapi.responses.json import (
     CreateJsonFailureResponseOptions,
     CreateJsonSuccessResponseOptions,
     JsonResponse,
-    JsonResponseErrorInput,
+    JsonResponseError,
     createJsonResponse,
 )
 from pydantic import BaseModel
@@ -60,7 +60,7 @@ async def http_404_handler(req: Request, exc: HTTPException) -> Response:
             status=exc.status_code,
             headers=exc.headers or {},
             errors=[
-                JsonResponseErrorInput(
+                JsonResponseError(
                     code="not_found",
                 )
             ],

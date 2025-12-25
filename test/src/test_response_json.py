@@ -7,7 +7,7 @@ from httpx import Response as HttpxResponse
 from jder_fastapi.responses.json import (
     CreateJsonFailureResponseOptions,
     JsonResponse,
-    JsonResponseErrorInput,
+    JsonResponseError,
     createJsonResponse,
 )
 
@@ -25,7 +25,7 @@ async def fail(res: FastApiResponse) -> FastApiResponse:
         res,
         CreateJsonFailureResponseOptions(
             errors=[
-                JsonResponseErrorInput(
+                JsonResponseError(
                     code="parse",
                     path=["response"],
                     message="response error",
@@ -42,7 +42,7 @@ async def server(res: FastApiResponse) -> FastApiResponse:
         CreateJsonFailureResponseOptions(
             status=500,
             errors=[
-                JsonResponseErrorInput(
+                JsonResponseError(
                     code="server",
                     path=["server"],
                     message="server",
