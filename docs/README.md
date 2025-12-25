@@ -42,7 +42,9 @@ And the response will be shown as below:
 
 ```json
 {
-    "success": true
+    "success": true,
+    "data": null,
+    "errors": []
 }
 ```
 
@@ -75,7 +77,8 @@ And the response will be shown as below:
 ```json
 {
     "success": true,
-    "data": "Hello, World!"
+    "data": "Hello, World!",
+    "errors": []
 }
 ```
 
@@ -114,9 +117,12 @@ And the response will be shown as below:
 ```json
 {
     "success": false,
+    "data": null,
     "errors": [
         {
-            "code": "server"
+            "code": "server",
+            "path": [],
+            "message": null
         }
     ]
 }

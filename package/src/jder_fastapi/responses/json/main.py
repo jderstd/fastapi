@@ -1,7 +1,7 @@
 from typing import Any, Mapping, Optional, TypeVar
 
 from fastapi.responses import JSONResponse, Response
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 T = TypeVar("T")
 
@@ -15,7 +15,7 @@ class JsonResponseError(BaseModel):
     """
     Code representing the error.
     """
-    path: Optional[list[str]] = None
+    path: list[str] = Field(default_factory=list)
     """
     Indicates where the error occurred.
     """
@@ -38,7 +38,7 @@ class JsonResponse[T = Any](BaseModel):
     """
     Requested information for the response when `success` is `true`.
     """
-    errors: Optional[list[JsonResponseError]] = None
+    errors: list[JsonResponseError] = []
     """
     A list of errors for the response when `success` is `false`.
     """
@@ -76,7 +76,7 @@ class CreateJsonFailureResponseOptions(CreateJsonResponseBaseOptions):
     Options of `createJsonResponse` function.
     """
 
-    errors: Optional[list[JsonResponseError]] = None
+    errors: list[JsonResponseError] = []
     """
     A list of errors for the response when `success` is `false`.
     """
@@ -179,15 +179,17 @@ def createJsonResponse(
     # success
     if isinstance(options, CreateJsonSuccessResponseOptions):
         status = options.status if options and options.status else 200
+
         body = JsonResponse(
             success=True,
             data=options.data,
-            errors=None,
+            errors=[],
         )
 
     # failure
     elif isinstance(options, CreateJsonFailureResponseOptions):
         status = options.status if options and options.status else 400
+
         body = JsonResponse(
             success=False,
             data=None,
@@ -199,11 +201,11 @@ def createJsonResponse(
         body = JsonResponse(
             success=True,
             data=None,
-            errors=None,
+            errors=[],
         )
 
     return JSONResponse(
         status_code=status,
         headers=headers,
-        content=body.model_dump(exclude_none=True),
+        content=body.model_dump(),
     )

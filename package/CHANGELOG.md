@@ -1,3 +1,14 @@
+## 0.2.0
+
+### Breaking Changes
+
+- `path` field in `JsonResponseError` is a list instead of an optional list now
+- `errors` field in `JsonResponse` is a list instead of an optional list now
+
+### What's Changed
+
+- Avoid omit null value and empty array
+
 ## 0.1.9 (2025-12-23)
 
 ### What's Changed
