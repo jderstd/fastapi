@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "jder-fastapi"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
     "fastapi>=0.116.0,<0.129.0",
 ]
