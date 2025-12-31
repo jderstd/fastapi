@@ -103,7 +103,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "fastapi", extras = ["standard"], specifier = ">=0.116.0,<0.128.0" },
+    { name = "fastapi", extras = ["standard"], specifier = ">=0.116.0,<0.129.0" },
     { name = "jder-fastapi", editable = "package" },
 ]
 
@@ -310,7 +310,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "fastapi", specifier = ">=0.116.0,<0.128.0" }]
+requires-dist = [{ name = "fastapi", specifier = ">=0.116.0,<0.129.0" }]
 
 [[package]]
 name = "jinja2"
@@ -720,7 +720,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "fastapi", specifier = ">=0.116.0,<0.128.0" },
+    { name = "fastapi", specifier = ">=0.116.0,<0.129.0" },
     { name = "httpx", specifier = ">=0.28.1,<0.29.0" },
     { name = "jder-fastapi", editable = "package" },
     { name = "pytest", specifier = ">=9.0.2,<10.0.0" },
