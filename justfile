@@ -1,5 +1,5 @@
 set shell := ["bash", "-cu"]
-set windows-shell := ["powershell"]
+set windows-shell := ["pwsh", "-Command"]
 
 pkg := "package"
 
@@ -20,7 +20,7 @@ fmt:
 
 # Lint the code
 lint:
-    ls-lint
+    ls-lint -config ./.ls-lint.yaml
     typos
     uv run ruff check --fix
 
