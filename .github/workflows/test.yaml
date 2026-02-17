@@ -1,0 +1,45 @@
+name: Test
+
+on:
+    pull_request:
+        branches:
+            - main
+    push:
+        branches:
+            - main
+
+jobs:
+    node:
+        name: ${{ matrix.os.name }} / Python ${{ matrix.py }}
+        runs-on: ${{ matrix.os.code }}
+
+        strategy:
+            fail-fast: false
+            matrix:
+                os:
+                    - name: Linux
+                      code: ubuntu-latest
+                    - name: macOS
+                      code: macos-latest
+                    - name: Windows
+                      code: windows-latest
+                py:
+                    - 3.13
+                    - 3.14
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Install just
+              uses: extractions/setup-just@v3
+
+            - name: Setup Python
+              uses: alpheusci/setup-python@v1
+              with:
+                  interpreter-version: ${{ matrix.py }}
+
+            - name: Build packages
+              run: just build
+
+            - name: Run tests
+              run: just test
