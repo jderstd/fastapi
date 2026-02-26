@@ -1,3 +1,9 @@
+## 0.2.4
+
+### What's Changed
+
+- update `uv_build` supported version range to `>=0.9.0,<0.11.0`
+
 ## 0.2.3 (2026-02-26)
 
 ### What's Changed
