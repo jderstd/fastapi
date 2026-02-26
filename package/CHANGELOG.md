@@ -1,3 +1,9 @@
+## 0.2.3 (2026-02-26)
+
+### What's Changed
+
+- Update `fastapi` supported version range to `>=0.116.0,<0.134.0`
+
 ## 0.2.2 (2026-02-14)
 
 ### What's Changed
