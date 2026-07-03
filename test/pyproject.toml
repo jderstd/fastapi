@@ -2,7 +2,7 @@
 name = "test"
 version = "0.0.0"
 dependencies = [
-    "fastapi==0.138.1",
+    "fastapi==0.139.0",
     "httpx>=0.28.1,<0.29.0",
     "jder_fastapi",
     "pytest>=9.0.2,<10.0.0",
