@@ -107,7 +107,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "fastapi", extras = ["standard"], specifier = ">=0.117.0,<1.0.0" },
+    { name = "fastapi", extras = ["standard"], specifier = ">=0.139.0,<1.0.0" },
     { name = "jder-fastapi", editable = "package" },
 ]
 
