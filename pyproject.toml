@@ -16,5 +16,5 @@ jder-fastapi = { workspace = true }
 [dependency-groups]
 dev = [
     "ruff>=0.15.22,<0.16.0",
-    "ty>=0.0.61,<0.1.0",
+    "ty>=0.0.62,<0.1.0",
 ]
