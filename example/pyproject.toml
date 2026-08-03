@@ -2,7 +2,7 @@
 name = "example"
 version = "0.0.0"
 dependencies = [
-    "fastapi[standard]>=0.140.0,<1.0.0",
+    "fastapi[standard]>=0.141.1,<1.0.0",
     "jder_fastapi",
 ]
 classifiers = ["Private :: Do Not Upload"]
